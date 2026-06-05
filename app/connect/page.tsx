@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { TherapistCard } from "@/components/therapist-card"
 import { Button } from "@/components/ui/button"
-import { LoginModal } from "@/components/login-modal"
+import AuthModal from "@/components/login-modal"
 import { useAuth } from "@/contexts/auth-context"
 
 // Therapist data will be populated from backend API
@@ -105,12 +105,10 @@ export default function ConnectPage() {
         </div>
       </div>
 
-      <LoginModal 
-        open={showLoginModal} 
-        onOpenChange={setShowLoginModal}
-        title="Sign in to book"
-        message="Create an account to book sessions with therapists and track your progress."
-      />
+      <AuthModal
+       isOpen={showLoginModal}
+       onClose={() => setShowLoginModal(false)}
+      /> 
     </main>
   )
 }
