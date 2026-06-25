@@ -32,7 +32,7 @@ export function useSavedChats(): UseSavedChatsReturn {
       }
 
       // Construct Absolute Backend URL
-      const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000"
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.kaalai.in"
       const url = `${baseUrl}/api/saved-chats/${user.id}`
       const apiKey = process.env.NEXT_PUBLIC_API_KEY || ""
 
@@ -81,7 +81,7 @@ export function useSavedChats(): UseSavedChatsReturn {
   const saveChat = async (chatData: Partial<SavedChat>) => {
     if (!user?.id) return
 
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000"
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.kaalai.in"
     const url = `${baseUrl}/api/save-chat` // Pointing to the proper save endpoint
     const apiKey = process.env.NEXT_PUBLIC_API_KEY || ""
 
