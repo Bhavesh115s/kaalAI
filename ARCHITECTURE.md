@@ -93,7 +93,7 @@ contexts/
 3. **Next.js API route forwards to FastAPI backend**
    ```typescript
    // /app/api/chat/route.ts
-   const response = await fetch("http://localhost:8000/chat", {
+   const response = await fetch("https://api.kaalai.in/chat", {
      method: "POST",
      headers: { "X-API-Key": "andai" },
      body: JSON.stringify(body)
@@ -152,7 +152,7 @@ contexts/
 
 ```env
 # Backend URL
-FASTAPI_BASE_URL=http://localhost:8000
+FASTAPI_BASE_URL=https://api.kaalai.in
 
 # API Key
 API_KEY=andai
@@ -247,7 +247,7 @@ export function useNewFeature() {
    // app/api/new-feature/route.ts
    import { NextRequest, NextResponse } from "next/server"
 
-   const FASTAPI_BASE_URL = process.env.FASTAPI_BASE_URL || "http://localhost:8000"
+   const FASTAPI_BASE_URL = process.env.FASTAPI_BASE_URL || "https://api.kaalai.in"
    const API_KEY = process.env.API_KEY || "andai"
 
    export async function GET(request: NextRequest) {
