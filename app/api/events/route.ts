@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 
 const FASTAPI_BASE_URL =
-  process.env.FASTAPI_BASE_URL || "http://127.0.0.1:8000"
+  process.env.FASTAPI_BASE_URL || "https://api.kaalai.in"
 
 const API_KEY = process.env.API_KEY?.trim()
 
