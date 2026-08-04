@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Source_Serif_4, Inter } from "next/font/google"
+import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
 import { AuthProvider } from "@/contexts/auth-context"
 import "./globals.css"
@@ -42,13 +43,30 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${sourceSerif.variable} ${inter.variable}`}
-      suppressHydrationWarning // Prevents extensions from breaking HTML-level attributes
+      suppressHydrationWarning
     >
-      <body 
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-VYTHNS59TF"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-VYTHNS59TF');
+          `}
+        </Script>
+      </head>
+
+      <body
         className="font-sans antialiased bg-background text-foreground min-h-screen"
-        suppressHydrationWarning // Prevents extensions from breaking body-level attributes (like cz-shortcut-listen)
+        suppressHydrationWarning
       >
         <AuthProvider>{children}</AuthProvider>
+
+        {/* Vercel Analytics */}
         <Analytics />
       </body>
     </html>
